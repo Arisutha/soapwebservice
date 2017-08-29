@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.coba.co.id/calculator" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns5="http://schemas.xmlsoap.org/soap/http" xmlns:ns4="http://www.coba.co.id/calculator/bagi" xmlns:ns3="http://www.coba.co.id/calculator/kurang" xmlns:ns2="http://www.coba.co.id/calculator/tambah" xmlns:ns1="http://www.coba.co.id/calculator/kali" name="CalculatorWSService" targetNamespace="http://www.coba.co.id/calculator">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.coba.co.id/calculator" targetNamespace="http://www.coba.co.id/calculator" version="1.0">
+
+  <xs:element name="dataRequest" type="tns:dataRequest"/>
+
+  <xs:element name="dataResult" type="tns:dataResult"/>
+
+  <xs:complexType name="dataRequest">
+    <xs:sequence>
+      <xs:element name="nilai1" nillable="true" type="xs:double"/>
+      <xs:element name="nilai2" nillable="true" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dataResult">
+    <xs:sequence>
+      <xs:element name="result" nillable="true" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.coba.co.id/calculator" xmlns="http://www.coba.co.id/calculator/kali" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.coba.co.id/calculator/kali">
+  <xsd:import namespace="http://www.coba.co.id/calculator"/>
+  <xsd:element name="dataRequest" nillable="true" type="tns:dataRequest"/>
+  <xsd:element name="dataResult" nillable="true" type="tns:dataResult"/>
+</xsd:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.coba.co.id/calculator" xmlns="http://www.coba.co.id/calculator/tambah" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.coba.co.id/calculator/tambah">
+  <xsd:import namespace="http://www.coba.co.id/calculator"/>
+  <xsd:element name="dataRequest" nillable="true" type="tns:dataRequest"/>
+  <xsd:element name="dataResult" nillable="true" type="tns:dataResult"/>
+</xsd:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.coba.co.id/calculator" xmlns="http://www.coba.co.id/calculator/kurang" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.coba.co.id/calculator/kurang">
+  <xsd:import namespace="http://www.coba.co.id/calculator"/>
+  <xsd:element name="dataRequest" nillable="true" type="tns:dataRequest"/>
+  <xsd:element name="dataResult" nillable="true" type="tns:dataResult"/>
+</xsd:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.coba.co.id/calculator" xmlns="http://www.coba.co.id/calculator/bagi" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.coba.co.id/calculator/bagi">
+  <xsd:import namespace="http://www.coba.co.id/calculator"/>
+  <xsd:element name="dataRequest" nillable="true" type="tns:dataRequest"/>
+  <xsd:element name="dataResult" nillable="true" type="tns:dataResult"/>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="kali">
+    <wsdl:part element="ns1:dataRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kaliResponse">
+    <wsdl:part element="ns1:dataResult" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kurangResponse">
+    <wsdl:part element="ns3:dataResult" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tambah">
+    <wsdl:part element="ns2:dataRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bagiResponse">
+    <wsdl:part element="ns4:dataResult" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="tambahResponse">
+    <wsdl:part element="ns2:dataResult" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kurang">
+    <wsdl:part element="ns3:dataRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bagi">
+    <wsdl:part element="ns4:dataRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="calculatorws">
+    <wsdl:operation name="kali">
+      <wsdl:input message="tns:kali" name="kali">
+    </wsdl:input>
+      <wsdl:output message="tns:kaliResponse" name="kaliResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tambah">
+      <wsdl:input message="tns:tambah" name="tambah">
+    </wsdl:input>
+      <wsdl:output message="tns:tambahResponse" name="tambahResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kurang">
+      <wsdl:input message="tns:kurang" name="kurang">
+    </wsdl:input>
+      <wsdl:output message="tns:kurangResponse" name="kurangResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bagi">
+      <wsdl:input message="tns:bagi" name="bagi">
+    </wsdl:input>
+      <wsdl:output message="tns:bagiResponse" name="bagiResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorWSServiceSoapBinding" type="tns:calculatorws">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="kali">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="kali">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kaliResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tambah">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="tambah">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="tambahResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kurang">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="kurang">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kurangResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bagi">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="bagi">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="bagiResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorWSService">
+    <wsdl:port binding="tns:CalculatorWSServiceSoapBinding" name="calculatorwsPort">
+      <soap:address location="http://localhost:8089/calculatorWS/services/calculatorws_exe"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
